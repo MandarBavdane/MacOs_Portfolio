@@ -41,9 +41,23 @@ const setupTextHover = (container, type) => {
     letters.forEach((letter) => {
       const { left: l, width: w } = letter.getBoundingClientRect();
       const distance = Math.abs(mouseX - (l - left + w / 2));
-      const intensity = Math.exp(-(distance ** 2 / 20000));
+      const intensity = Math.exp(-(distance ** 2 / 6000));
 
-      animateLetter(letter, min + (max - min) * intensity);
+      const scale = 1 + intensity * 0.35;
+      const depth = intensity * 120;
+      const tilt = intensity * 12 * Math.sign(mouseX - (l - left + w / 2));
+
+      gsap.to(letter, {
+        duration: 0.25,
+        ease: "power2.out",
+        fontVariationSettings: `'wght' ${min + (max - min) * intensity}`,
+        transform: `
+        perspective(600px)
+        translateZ(${depth}px)
+        scale(${scale})
+        rotateY(${tilt}deg)
+      `,
+      });
     });
   };
 
@@ -84,7 +98,7 @@ const Welcome = () => {
         )}
       </p>
       <h1 ref={titleRef} className="mt-7">
-        {renderText("World", "text-9xl italic font-georama", 100)}
+        {renderText("Journey", "text-9xl italic font-georama", 100)}
       </h1>
 
       <div className="small-screen">
