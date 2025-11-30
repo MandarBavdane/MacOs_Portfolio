@@ -471,15 +471,15 @@ const TRASH_LOCATION = {
       position: "top-10 left-10",
       imageUrl: "/images/trash-1.png",
     },
-    {
-      id: 2,
-      name: "trash2.png",
-      icon: "/images/image.png",
-      kind: "file",
-      fileType: "img",
-      position: "top-40 left-80",
-      imageUrl: "/images/trash-2.png",
-    },
+    // {
+    //   id: 2,
+    //   name: "trash2.png",
+    //   icon: "/images/image.png",
+    //   kind: "file",
+    //   fileType: "img",
+    //   position: "top-40 left-80",
+    //   imageUrl: "/images/trash-2.png",
+    // },
   ],
 };
 
